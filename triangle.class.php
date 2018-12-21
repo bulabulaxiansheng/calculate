@@ -33,13 +33,20 @@ class Triangle extends Shape{
 
 	function check($arr){
 		$bg=true;
-		if($arr['width']<0){
-			echo $this->name."的宽不能小于0!<br>";
+		if($arr['bian1']<0){
+			echo "第一个边不能小于0!<br>";
 			$bg=false;
 		}
-
-		if($arr['height']<0){
-			echo $this->name."的高不能小于0!<br>";
+		if($arr['bian2']<0){
+			echo "第一个边不能小于0!<br>";
+			$bg=false;
+		}
+		if($arr['bian3']<0){
+			echo "第一个边不能小于0!<br>";
+			$bg=false;
+		}
+		if(($arr['bian1']+$arr['bian2'])<$arr['bian3']||($arr['bian1']+$arr['bian3'])<$arr['bian2']||($arr['bian2']+$arr['bian3'])<$arr['bian1']){
+			echo "两边之和要大于第三边";
 			$bg=false;
 		}
 		return $bg;
