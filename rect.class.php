@@ -22,8 +22,8 @@ class Rect extends Shape{
 
 	function view(){
 		$form='<form action="index.php?action=rect" method="post">';
-		$form.=$this->name.'的宽:<input type="text" name="width" value="'.$_POST['width'].'"/><br>';
-		$form.=$this->name.'的高:<input type="text" name="height" value="'.$_POST['height'].'"/><br>';
+		$form.=$this->name.'的宽:<input type="text" name="width" value="'.@$_POST['width'].'"/><br>';
+		$form.=$this->name.'的高:<input type="text" name="height" value="'.@$_POST['height'].'"/><br>';
 		$form.='<input type="submit" name="dosubmit" value="计算"/><br>';
 		$form.='<form>';
 		echo $form;
