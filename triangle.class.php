@@ -14,18 +14,19 @@ class Triangle extends Shape{
 	}
 
 	function area(){
-		return $this->width*$this->height;
+		$p=($this->bian1+$this->bian2+$this->bian3)/2;
+		return sqrt($p*($p-$this->bian1)*($p-$this->bian2)*($p-$this->bian3));
 	}
 
 	function zhou(){
-		return ;
+		return $this->bian1+$this->bian2+$this->bian3;
 	}
 
 	function view(){
-		$form='<form action="index.php?action=rect" method="post">';
-		$form.=$this->name.'的边1:<input type="text" name="bian1" value="'.$_POST[].'"/><br>';
-		$form.=$this->name.'的边2:<input type="text" name="bian2" value="'.$_POST[].'"/><br>';
-		$form.=$this->name.'的边3:<input type="text" name="bian3" value="'.$_POST[].'"/><br>';
+		$form='<form action="index.php?action=triangle" method="post">';
+		$form.=$this->name.'的边1:<input type="text" name="bian1" value="'.@$_POST['bian1'].'"/><br>';
+		$form.=$this->name.'的边2:<input type="text" name="bian2" value="'.@$_POST['bian2'].'"/><br>';
+		$form.=$this->name.'的边3:<input type="text" name="bian3" value="'.@$_POST['bian3'].'"/><br>';
 		$form.='<input type="submit" name="dosubmit" value="计算"/><br>';
 		$form.='<form>';
 		echo $form;
@@ -45,7 +46,7 @@ class Triangle extends Shape{
 			echo "第一个边不能小于0!<br>";
 			$bg=false;
 		}
-		if(($arr['bian1']+$arr['bian2'])<$arr['bian3']||($arr['bian1']+$arr['bian3'])<$arr['bian2']||($arr['bian2']+$arr['bian3'])<$arr['bian1']){
+		if(($arr['bian1']+$arr['bian2']<=$arr['bian3'])||($arr['bian1']+$arr['bian3']<=$arr['bian2'])||($arr['bian2']+$arr['bian3']<=$arr['bian1'])){
 			echo "两边之和要大于第三边";
 			$bg=false;
 		}
